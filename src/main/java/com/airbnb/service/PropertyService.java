@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface PropertyService {
-    public PropertyDto add(PropertyDto propertyDto,long cityId, long countryId);
+    public PropertyDto add(PropertyDto propertyDto);
     public Property find(Long id);
     public void delete(Long id);
 }

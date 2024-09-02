@@ -29,7 +29,14 @@ public class AuthController {
     public ResponseEntity<AppUserDto> createUser(
             @RequestBody AppUserDto appUserDto){
 
-
+        Optional<AppUser> opEmail = appUserRepository.findByEmail(appUserDto.getEmail());
+        if(opEmail.isPresent()){
+            throw new UserExists("Email is already exists");
+        }
+        Optional<AppUser> opUsername = appUserRepository.findByUsername(appUserDto.getUsername());
+        if (opUsername.isPresent()){
+            throw new UserExists("Username is Already exists");
+        }
         appUserDto.setRole("ROLE_USER");
         AppUserDto add = appUserService.createUser(appUserDto);
         return new ResponseEntity<>(add, HttpStatus.CREATED);

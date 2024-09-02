@@ -37,7 +37,4 @@ public class CityServiceImpl implements CityService{
     public void delete(long id) {
         cityRepository.deleteById(id);
     }
-
-    //search searchProperty
-
 }

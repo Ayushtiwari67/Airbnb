@@ -1,7 +1,6 @@
 package com.airbnb.service;
 
 import com.airbnb.entity.AppUser;
-import com.airbnb.exception.UserExists;
 import com.airbnb.payload.AppUserDto;
 import com.airbnb.payload.LoginDto;
 import com.airbnb.repository.AppUserRepository;
@@ -24,14 +23,6 @@ public class AppUserServiceImpl implements AppUserService{
 
     @Override
     public AppUserDto createUser(AppUserDto appUserDto) {
-        Optional<AppUser> opEmail = appUserRepository.findByEmail(appUserDto.getEmail());
-        if(opEmail.isPresent()){
-            throw new UserExists("Email is already exists");
-        }
-        Optional<AppUser> opUsername = appUserRepository.findByUsername(appUserDto.getUsername());
-        if (opUsername.isPresent()){
-            throw new UserExists("Username is Already exists");
-        }
         String hashpw = BCrypt.hashpw(appUserDto.getPassword(), BCrypt.gensalt(10));
         appUserDto.setPassword(hashpw);
         AppUser appUser = mapToEntity(appUserDto);

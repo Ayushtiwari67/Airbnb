@@ -1,11 +1,7 @@
 package com.airbnb.service;
 
-import com.airbnb.entity.City;
-import com.airbnb.entity.Country;
 import com.airbnb.entity.Property;
 import com.airbnb.payload.PropertyDto;
-import com.airbnb.repository.CityRepository;
-import com.airbnb.repository.CountryRepository;
 import com.airbnb.repository.PropertyRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,21 +10,13 @@ import java.util.Optional;
 @Service
 public class PropertyServiceImpl implements PropertyService{
     private PropertyRepository propertyRepository;
-    private CityRepository cityRepository;
-    private CountryRepository countryRepository;
 
-    public PropertyServiceImpl(PropertyRepository propertyRepository, CityRepository cityRepository, CountryRepository countryRepository) {
+    public PropertyServiceImpl(PropertyRepository propertyRepository) {
         this.propertyRepository = propertyRepository;
-        this.cityRepository = cityRepository;
-        this.countryRepository = countryRepository;
     }
 
     @Override
-    public PropertyDto add(PropertyDto propertyDto, long cityId, long countryId) {
-        City city = cityRepository.findById(cityId).get();
-        propertyDto.setCity(city);
-        Country country = countryRepository.findById(countryId).get();
-        propertyDto.setCountry(country);
+    public PropertyDto add(PropertyDto propertyDto) {
         Property entity = mapToEntity(propertyDto);
         Property save = propertyRepository.save(entity);
         PropertyDto dto = mapToDto(save);

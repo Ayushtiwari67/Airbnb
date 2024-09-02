@@ -1,4 +1,6 @@
 package com.airbnb.controller;
+
+import com.airbnb.entity.City;
 import com.airbnb.payload.CityDto;
 import com.airbnb.service.CityService;
 import org.springframework.http.HttpStatus;

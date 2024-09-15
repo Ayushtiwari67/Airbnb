@@ -1,12 +1,13 @@
 package com.airbnb.service;
-
 import com.airbnb.entity.AppUser;
-import com.airbnb.entity.Booking;
-import com.airbnb.payload.PropertyDto;
-import com.airbnb.payload.RoomDto;
+import com.airbnb.payload.BookingDto;
 import org.springframework.stereotype.Service;
+
+
 
 @Service
 public interface BookingService {
-    public RoomDto roomBook(RoomDto roomDto,long propertyId, String roomType, AppUser user, Booking booking );
+//    BookingDto createBooking(long propertyId, AppUser user, BookingDto bookingDto, String roomType);
+//public BookingDto createBooking(long propertyId, String roomType);
+    public BookingDto createBooking(long propertyId,  String roomType,BookingDto bookingDto, AppUser user);
 }

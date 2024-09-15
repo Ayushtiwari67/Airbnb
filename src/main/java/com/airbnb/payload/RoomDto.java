@@ -7,6 +7,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class RoomDto {
@@ -15,4 +17,7 @@ public class RoomDto {
     private Float price;
     private Integer count;
     private Property property;
+    private LocalDate date;
+    private Long version;
+
 }

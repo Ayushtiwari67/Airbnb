@@ -37,6 +37,7 @@ public class RoomServiceImpl implements RoomService{
         entity.setType(dto.getType());
         entity.setPrice(dto.getPrice());
         entity.setProperty(dto.getProperty());
+        entity.setDate(dto.getDate());
         return entity;
     }
 
@@ -47,6 +48,7 @@ public class RoomServiceImpl implements RoomService{
         dto.setType(entity.getType());
         dto.setCount(entity.getCount());
         dto.setProperty(entity.getProperty());
+        dto.setDate(entity.getDate());
         return dto;
     }
 }

@@ -42,7 +42,7 @@ public class Booking {
     private AppUser appUser;
 
     @Column(name = "total_price", nullable = false)
-    private Float total_Price;
+    private Float totalPrice;
 
     @Column(name = "total_nights", nullable = false)
     private int totalNights;
